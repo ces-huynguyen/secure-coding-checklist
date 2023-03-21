@@ -23,7 +23,7 @@ Table of Contents
 * [General Coding Practices](#general-coding-practices)
 * [How To Implement a Checklist in Github Repositories](#how-to-implement-a-checklist-in-github-repositories)
 
-Input Validation
+Input Validation (Dev has to validate all input)
 ----------------
 - Conduct all data validation on a trusted system (e.g., The server)
 - Identify all data sources and classify them into trusted and untrusted. Validate all data from untrusted [sources (e.g., Databases, file streams, etc.)]
@@ -46,7 +46,7 @@ Input Validation
 - Check for “dot-dot-slash" (../ or ..\) path alterations characters. In cases where UTF-8 extended character set encoding is supported, address alternate representation like: %c0%ae%c0%ae/ (Utilize canonicalization to address double encoding or other forms of obfuscation attacks)
  
 
-Output Encoding
+Output Encoding (Dev)
 ---------------
 - Conduct all encoding on a trusted system (e.g., The server)
 - Utilize a standard, tested routine for each type of outbound encoding
@@ -56,7 +56,7 @@ Output Encoding
 - Sanitize all output of un-trusted data to operating system commands
  
 
-Authentication and Password Management
+Authentication and Password Management (Solution Architecture and Teadlead incharge )
 --------------------------------------
 - Require authentication for all pages and resources, except those specifically intended to be public
 - All authentication controls must be enforced on a trusted system (e.g., The server)
@@ -97,7 +97,7 @@ write-able only by the application. (Do not use the MD5 algorithm if it can be a
 - If using third party code for authentication, inspect the code carefully to ensure it is not affected by any malicious code
  
 
-Access Control
+Access Control (DevOps, Solution Architechture and Techlead)
 --------------
 - Use only trusted system objects, e.g. server side session objects, for making access authorization decisions
 - Use a single site-wide component to check access authorization. This includes libraries that call external authorization services
@@ -125,7 +125,7 @@ Service accounts or accounts supporting connections to or from external systems 
 - Create an Access Control Policy to document an application's business rules, data types and access authorization criteria and/or processes so that access can be properly provisioned and controlled. This includes identifying access requirements for both the data and system resources
  
 
-Cryptographic Practices
+Cryptographic Practices (DevOps, Solution Architechture and Techlead)
 -----------------------
 - All cryptographic functions used to protect secrets from the application user must be implemented on a trusted system (e.g., The server)
 - Protect master secrets from unauthorized access
@@ -135,7 +135,7 @@ Cryptographic Practices
 - Establish and utilize a policy and process for how cryptographic keys will be managed
  
 
-Error Handling and Logging
+Error Handling and Logging (Should be designed by solution architechture and followed by Dev)
 --------------------------
 - Do not disclose sensitive information in error responses, including system details, session identifiers, or account information
 - Use error handlers that do not display debugging or stack trace information
@@ -163,7 +163,7 @@ Error Handling and Logging
 - Use a cryptographic hash function to validate log entry integrity
  
 
-Data Protection
+Data Protection (DevOps, Solution Architechture and Techlead)
 ---------------
 - Implement least privilege, restrict users to only the functionality, data and system information that is required to perform their tasks
 - Protect all cached or temporary copies of sensitive data stored on the server from unauthorized access and purge those temporary working files a soon as they are no longer required.
@@ -180,7 +180,7 @@ authentication
  -Implement appropriate access controls for sensitive data stored on the server. This includes cached data, temporary files and data that should be accessible only by specific system user
  
 
-Communication Security
+Communication Security (DevOps, Solution Architechture and Techlead)
 ----------------------
 - Implement encryption for the transmission of all sensitive information. This should include TLS for protecting the connection and may be supplemented by discrete encryption of sensitive files or nonHTTP based connections
 - TLS certificates should be valid and have the correct domain name, not be expired, and be installed with intermediate certificates when required
@@ -192,7 +192,7 @@ Communication Security
 - Filter parameters containing sensitive information from the HTTP referer, when linking to external sites
  
 
-System Configuration
+System Configuration (DevOps, Solution Architechture and Techlead) - Scan system before every realease (Srum master, PM )
 --------------------
 - Ensure servers, frameworks and system components are running the latest approved version
 - Ensure servers, frameworks and system components have all patches issued for the version in use
@@ -212,7 +212,7 @@ System Configuration
 - Implement a software change control system to manage and record changes to the code both in development and production
  
 
-Database Security
+Database Security (DevOps, Solution Architechture and Techlead)
 -----------------
 - Use strongly typed parameterized queries
 - Utilize input validation and output encoding and be sure to address meta characters. If these fail, do not run the database command
@@ -229,7 +229,7 @@ Database Security
 - The application should connect to the database with different credentials for every trust distinction (e.g., user, read-only user, guest, administrators)
  
 
-File Management
+File Management (DevOps, Solution Architechture and Techlead)
 ---------------
 - Do not pass user supplied data directly to any dynamic include function
 - Require authentication before allowing a file to be uploaded
@@ -247,7 +247,7 @@ File Management
 - Scan user uploaded files for viruses and malware
  
 
-Memory Management
+Memory Management (DevOps, Solution Architechture and Techlead)
 -----------------
 - Utilize input and output control for un-trusted data
 - Double check that the buffer is as large as specified
@@ -260,7 +260,7 @@ Memory Management
 - Properly free allocated memory upon the completion of functions and at all exit points
  
 
-General Coding Practices
+General Coding Practices (Dev has to follow)
 ------------------------
 - Use tested and approved managed code rather than creating new unmanaged code for common tasks
 - Utilize task specific built-in APIs to conduct operating system tasks. Do not allow the application to issue commands directly to the Operating System, especially through the use of application initiated command shells
